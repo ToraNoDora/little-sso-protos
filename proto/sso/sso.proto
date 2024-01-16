@@ -82,6 +82,7 @@ message GetUserResponse {
 
 message IsAdminRequest {
     string user_id = 1;
+    string app_id = 2;
 }
 
 message IsAdminResponse {
