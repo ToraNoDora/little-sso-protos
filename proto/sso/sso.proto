@@ -1,0 +1,89 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "little.sso.v1;ssov1";
+
+// auth
+service Auth {
+    rpc SignUp (SignUpRequest) returns (SignUpResponse);
+    rpc SignIn (SignInRequest) returns (SignInResponse);
+}
+
+message SignUpRequest {
+    string email = 1;
+    string password = 2;
+}
+
+message SignUpResponse {
+    string user_id = 1;
+}
+
+message SignInRequest {
+    string email = 1;
+    string password = 2;
+    string app_id = 3;
+}
+
+message SignInResponse {
+    string token = 1;
+}
+
+// permission
+service Permission {
+    rpc AddPermission (AddPermissionRequest) returns (AddPermissionResponse);
+    rpc AppointAsAdministrator (AppointAsAdministratorRequest) returns (AppointAsAdministratorResponse);
+    rpc RemovePermission (RemovePermissionRequest) returns (RemovePermissionResponse);
+}
+
+message AddPermissionRequest {
+    string user_id = 1;
+    int64 group_id = 2;
+}
+
+message AddPermissionResponse {
+    string email = 1;
+}
+
+message AppointAsAdministratorRequest {
+    string email = 1;
+    string app_id = 2;
+}
+
+message AppointAsAdministratorResponse {
+    string admin_id = 1;
+}
+
+message RemovePermissionRequest {
+    string user_id = 1;
+    int64 group_id = 2;
+}
+
+message RemovePermissionResponse {
+    bool status = 1;
+}
+
+// user
+service User {
+    rpc GetUser (GetUserRequest) returns (GetUserResponse);
+    rpc IsAdmin (IsAdminRequest) returns (IsAdminResponse);
+}
+
+message GetUserRequest {
+    string email = 1;
+}
+
+message GetUserResponse {
+    string user_id = 1;
+    string email = 2;
+    string username = 3;
+    string created_at = 4;
+}
+
+message IsAdminRequest {
+    string user_id = 1;
+}
+
+message IsAdminResponse {
+    bool is_admin = 1;
+}
