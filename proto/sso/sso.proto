@@ -37,12 +37,12 @@ service Permission {
 }
 
 message AddPermissionRequest {
-    string user_id = 1;
+    string email = 1;
     int64 group_id = 2;
 }
 
 message AddPermissionResponse {
-    string email = 1;
+    string permission_id = 1;
 }
 
 message AppointAsAdministratorRequest {
