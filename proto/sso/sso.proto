@@ -55,7 +55,7 @@ message AppointAsAdministratorResponse {
 }
 
 message RemovePermissionRequest {
-    string user_id = 1;
+    string email = 1;
     int64 group_id = 2;
 }
 
