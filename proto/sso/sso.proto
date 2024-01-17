@@ -40,6 +40,7 @@ service Permission {
 message AddPermissionRequest {
     string email = 1;
     int64 group_id = 2;
+    bool add_flag = 3;
 }
 
 message AddPermissionResponse {
@@ -49,6 +50,7 @@ message AddPermissionResponse {
 message AppointAsAdministratorRequest {
     string email = 1;
     string app_id = 2;
+    bool is_admin = 3;
 }
 
 message AppointAsAdministratorResponse {
